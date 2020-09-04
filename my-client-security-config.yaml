@@ -1,0 +1,16 @@
+# my-client-security-config.yaml
+---
+apiVersion: stable.patricelabs.io/v1
+kind: clientSecurityConfig
+metadata:
+  name: my-client-security-config
+spec:
+  metadata:
+    owner: Carlos
+  clientId: fc1050da-eee7-11ea-adc1-0242ac120002
+  audience: api.my-domain.net
+  pinningType: cookie
+  accessTokenTTL: 60000
+  refreshTokenTTL: 600000
+  domain:
+    name: my-domain

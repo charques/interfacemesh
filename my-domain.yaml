@@ -1,0 +1,33 @@
+# my-domain.yaml
+---
+apiVersion: stable.patricelabs.io/v1
+kind: domain
+metadata:
+  name: my-domain
+spec:
+  metadata:
+    owner: Carlos
+  domainBase: my-domain.net
+  domainGroups:
+    - groupType: web
+      environments:
+        - envName: test
+          fullDomain: test.my-domain.net
+          fixedAppForDomain: 
+          appToRedirectOnRoot: 
+        - envName: acceptance
+          fullDomain: accp.my-domain.net
+          fixedAppForDomain: 
+          appToRedirectOnRoot: 
+        - envName: production
+          fullDomain: prod.my-domain.net
+          fixedAppForDomain: 
+          appToRedirectOnRoot: 
+    - groupType: api
+      environments:
+        - envName: test
+          fullDomain: api.test.my-domain.net
+        - envName: acceptance
+          fullDomain: api.accp.my-domain.net
+        - envName: production
+          fullDomain: api.prod.my-domain.net
