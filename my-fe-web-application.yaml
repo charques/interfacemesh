@@ -1,0 +1,14 @@
+# my-fe-web-application.yaml
+---
+apiVersion: "stable.patricelabs.io/v1"
+kind: frontendApplication
+metadata:
+  name: my-fe-web-application
+spec:
+  metadata:
+    owner: Carlos
+    description: My first web application
+  type: web-appplication
+  clientSecurityConfigDependency: my-client-security-config
+  componentSubcriptions:
+    - component: my-fe-web-application-project:v1

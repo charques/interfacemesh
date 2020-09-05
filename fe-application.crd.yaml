@@ -1,12 +1,12 @@
-# client-security-config.crd.yaml
+# fe-application.crd.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   # name must match the spec fields below, and be in the form: <plural>.<group>
-  name: clientsecurityconfigs.stable.patricelabs.io
+  name: frontendapplications.stable.patricelabs.io
 spec:
-  # group name to use for clientsecurityconfig: /clientsecurityconfig/<group>/<version>
+  # group name to use for frontendcomponents: /frontendapplications/<group>/<version>
   group: stable.patricelabs.io
   # list of versions supported by this CustomResourceDefinition
   versions:
@@ -20,7 +20,7 @@ spec:
           type: object
           properties:
             spec:
-              required: [clientId,pinningType]
+              required: [type]
               type: object
               properties:
                 metadata:
@@ -28,32 +28,30 @@ spec:
                   properties:
                     owner:
                       type: string
-                clientId:
-                  type: string
-                audience:
-                  type: string 
-                pinningType:
-                  type: string
-                  enum: [SRP,cookie,cert]
-                accessTokenTTL:
-                  type: integer
-                refreshTokenTTL:
-                  type: integer
-                domain:
-                  type: object
-                  properties:
-                    name:
+                    description:
                       type: string
-                
+                type:
+                  type: string
+                  enum: [web-appplication, mobile-application]
+                clientSecurityConfigDependency: # Client Application Security Config
+                  type: string 
+                componentSubcriptions:
+                  type: array
+                  items:
+                    type: object # FE component
+                    properties:
+                      component:
+                        type: string
+                  
   # either Namespaced or Cluster
   scope: Namespaced
   names:
-    # plural name to be used in the URL: /clientsecurityconfigs/<group>/<version>/<plural>
-    plural: clientsecurityconfigs
+    # plural name to be used in the URL: /frontendapplications/<group>/<version>/<plural>
+    plural: frontendapplications
     # singular name to be used as an alias on the CLI and for display
-    singular: clientsecurityconfig
+    singular: frontendapplication
     # kind is normally the CamelCased singular type. Your resource manifests use this.
-    kind: clientSecurityConfig
+    kind: frontendApplication
     # shortNames allow shorter string to match your resource on the CLI
     shortNames:
-    - csc
+    - fap

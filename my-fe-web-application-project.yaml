@@ -1,0 +1,32 @@
+# my-fe-web-application-project.yaml
+---
+apiVersion: "stable.patricelabs.io/v1"
+kind: frontendComponent
+metadata:
+  name: my-fe-web-application-project
+spec:
+  metadata:
+    owner: Carlos
+    description: My first fe component
+    tags:
+      - tp
+      - portal
+    contacts:
+      - type: email
+        address: myemail@whatever.es
+      - type: mattermost
+        address: https://mattermost.my-domain.es/channels/town-square
+  type: web-app
+  programCode: tp
+  hosting:
+    server: appServer
+    target: intranet
+  technology: polymer
+  deprecated: false
+  visible: true
+  endpointDependencies:
+    - method: get
+      host: acme-api
+      pathTemplate: /path-01
+
+# TODO: include versions and enpoints dependencies per version

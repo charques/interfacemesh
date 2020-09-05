@@ -1,0 +1,90 @@
+# fe-component.crd.yaml
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: frontendcomponents.stable.patricelabs.io
+spec:
+  # group name to use for frontendcomponents: /frontendcomponents/<group>/<version>
+  group: stable.patricelabs.io
+  # list of versions supported by this CustomResourceDefinition
+  versions:
+    - name: v1
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              required: [type]
+              type: object
+              properties:
+                metadata:
+                  type: object
+                  properties:
+                    owner:
+                      type: string
+                    description:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                    contacts:
+                      type: array
+                      items:
+                        type: object # Contacts
+                        properties:
+                          type:
+                            type: string
+                          address:
+                            type: string
+                type:
+                  type: string
+                  enum: [web-app, web-library, web-feature, native-app, native-module]
+                programCode:
+                  type: string 
+                hosting:
+                  type: object
+                  properties:
+                    server:
+                      type: string
+                      enum: [appServer,staticContentServer]
+                    target:
+                      type: string
+                      enum: [intranet, extranet]
+                technology:
+                  type: string
+                  enum: [polymer, x-web, android, ios]
+                deprecated:
+                  type: boolean
+                visible:
+                  type: boolean
+                endpointDependencies:
+                  type: array
+                  items:
+                    type: object # API endpoint
+                    properties:
+                      method:
+                        type: string
+                      host:
+                        type: string
+                      pathTemplate:
+                        type: string
+                  
+  # either Namespaced or Cluster
+  scope: Namespaced
+  names:
+    # plural name to be used in the URL: /frontendcomponents/<group>/<version>/<plural>
+    plural: frontendcomponents
+    # singular name to be used as an alias on the CLI and for display
+    singular: frontendcomponent
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: frontendComponent
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+    - fec
