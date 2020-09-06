@@ -1,0 +1,28 @@
+# my-fe-web-application-project-deployment.yaml
+---
+apiVersion: "stable.patricelabs.io/v1"
+kind: frontendComponentDeployment
+metadata:
+  name: my-fe-web-application-project-deployment
+spec:
+  component: my-fe-web-application-project
+  hosting:
+    server: appServer
+    target: intranet
+  artifacts:
+    - version: 1.0.0
+      package: my-fe-web-application-project-pkg
+      registry: my-npm-registry-entry-point
+      endpointDependencies:
+        - method: get
+          host: acme-api
+          pathTemplate: /path-01
+    - version: 2.0.0
+      package: my-fe-web-application-project-pkg
+      registry: my-npm-registry-entry-point
+      endpointDependencies:
+        - method: get
+          host: acme-api
+          pathTemplate: /path-01
+    
+

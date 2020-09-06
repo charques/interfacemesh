@@ -48,15 +48,6 @@ spec:
                   enum: [web-app, web-library, web-feature, native-app, native-module]
                 programCode:
                   type: string 
-                hosting:
-                  type: object
-                  properties:
-                    server:
-                      type: string
-                      enum: [appServer,staticContentServer]
-                    target:
-                      type: string
-                      enum: [intranet, extranet]
                 technology:
                   type: string
                   enum: [polymer, x-web, android, ios]
@@ -64,17 +55,6 @@ spec:
                   type: boolean
                 visible:
                   type: boolean
-                endpointDependencies:
-                  type: array
-                  items:
-                    type: object # API endpoint
-                    properties:
-                      method:
-                        type: string
-                      host:
-                        type: string
-                      pathTemplate:
-                        type: string
                   
   # either Namespaced or Cluster
   scope: Namespaced

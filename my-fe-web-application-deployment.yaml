@@ -1,0 +1,11 @@
+# my-fe-web-application.yaml
+---
+apiVersion: "stable.patricelabs.io/v1"
+kind: frontendApplicationDeployment
+metadata:
+  name: my-fe-web-application-deployment
+spec:
+  application: my-fe-web-application
+  componentSubcriptions:
+    - feComponent: my-fe-web-application-project
+      version: 1.0.0

@@ -18,15 +18,7 @@ spec:
         address: https://mattermost.my-domain.es/channels/town-square
   type: web-app
   programCode: tp
-  hosting:
-    server: appServer
-    target: intranet
   technology: polymer
   deprecated: false
   visible: true
-  endpointDependencies:
-    - method: get
-      host: acme-api
-      pathTemplate: /path-01
-
-# TODO: include versions and enpoints dependencies per version
+  
